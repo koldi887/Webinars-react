@@ -1,0 +1,76 @@
+.moviesContainer {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-top:4rem;
+    gap:2rem;
+}
+
+.movieBlock {
+    z-index: 0;
+    height: 30rem;
+    width: 20rem;
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.movieBlock:hover .overlayBlock {
+    height: 20%;
+}
+
+
+.movieBlock img {
+    width: 100%;
+    height: 100%;
+}
+
+
+.overlayBlock {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    transition: .5s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem 0 1rem;
+}
+
+.overlayBlock h2 {
+    color: white;
+    cursor: pointer;
+}
+
+.overlayBlock h2:hover {
+    color: #fe9344;
+}
+
+.paginationBlock {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+
+.paginationBlock h1 {
+    border: 2px solid transparent;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.paginationBlock h1:not(:last-child) {
+margin-right: 1rem;
+}
+
+.paginationBlock h1:hover,
+.paginationBlock h1:active
+{
+    border: 2px solid #fe9344;
+}
+
