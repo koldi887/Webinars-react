@@ -1,0 +1,80 @@
+
+.contentContainer {
+    display: grid;
+    height: 90vh;
+    margin-top: 2rem;
+    padding:0 5% 0 5% ;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: max-content;
+    grid-template-areas:
+    "search search"
+    "sidebar webinar"
+    "sidebar  webinar";
+}
+
+/*SEARCH*/
+
+.searchContainer {
+    display: flex;
+    justify-content: center;
+    grid-area: search;
+}
+
+.searchContainer input {
+    border: none;
+    width: 20rem;
+    padding: 0 1rem 0 1rem;
+    border-bottom-left-radius: 2rem;
+    border-top-left-radius: 2rem;
+    background: linear-gradient(305deg, #fafafa, #f6f6f6);
+}
+
+.searchContainer input:focus {
+    outline: none;
+}
+
+.searchContainer button {
+    border-bottom-left-radius: 0;
+    border-top-left-radius:0;
+}
+
+/*SOCIAL*/
+
+.socialMedia {
+    position: absolute;
+    left: 0;
+    top: 11rem;
+}
+
+/*Sidebar*/
+
+.sidebarContainer {
+
+    padding-top: 4rem;
+    grid-area: sidebar;
+}
+
+/*Webinar*/
+
+.webinarContainer {
+    padding: 0.5rem 0 0 2rem;
+    grid-area: webinar;
+}
+
+.chatIcon {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    color: #fe9344;
+}
+
+@media (max-width: 1000px) {
+    .webinarContainer {
+        display: flex;
+        justify-content: center;
+    }
+
+    .searchContainer input {
+        width: 100%;
+    }
+}

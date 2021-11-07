@@ -1,0 +1,18 @@
+.socialMediaWrapper {
+    border: 2px solid lightgray;
+    border-left: 0;
+    border-bottom-right-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+}
+
+.socialMediaWrapper a {
+    display: block;
+    padding: 0.5rem;
+}
+.socialMediaWrapper a:hover {
+    background-color: #ffdfc9;
+}
+
+.socialMediaWrapper a:not(:last-child) {
+    border-bottom: 2px solid lightgray;
+}

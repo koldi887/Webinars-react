@@ -1,0 +1,21 @@
+.sidebarWrapper {
+    display: grid;
+    grid-gap: 2rem;
+}
+
+.sidebarWrapper ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    font-size: large;
+}
+
+.subtitle {
+    display: flex;
+    align-items: center;
+}
+
+.subtitle p {
+    padding-left: 0.5rem;
+    margin: 0;
+}
