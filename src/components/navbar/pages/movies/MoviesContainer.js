@@ -7,8 +7,8 @@ export default function MoviesContainer(props) {
     const [currentPage, setCurrentPage] = useState(1);
     const [moviesPerPage] = useState(4);
 
-    const getMovieRequest = async() =>  {
-        const url = `http://www.omdbapi.com/?s=${props.searchValue}&apikey=e5d1210`;
+    const getMovieRequest = async(searchValue) =>  {
+        const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=e5d1210`;
         const response = await axios.get(url);
         const responseData = await response.data;
         if (responseData.Search) {
@@ -16,9 +16,8 @@ export default function MoviesContainer(props) {
         }
     }
     useEffect(() => {
-        getMovieRequest()
+        getMovieRequest(props.searchValue)
     },[props.searchValue])
-
 
     const addToFavorites = (elem) => {
         for (let item of props.favMovies) {
