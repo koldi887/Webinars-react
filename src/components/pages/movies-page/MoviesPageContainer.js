@@ -15,6 +15,7 @@ export default function MoviesPageContainer(props) {
       setMovies(responseData.Search);
     }
   };
+
   useEffect(() => {
     getMovieRequest(props.searchValue);
   }, [props.searchValue]);
@@ -24,6 +25,14 @@ export default function MoviesPageContainer(props) {
       if (item["imdbID"] === elem["imdbID"]) return;
     }
     props.setFavMovies([...props.favMovies, elem]);
+  };
+
+  const textOnAddToFavorites = (item) => {
+    const includes = props.favMovies.some(
+      (e) => e["imdbID"] === item["imdbID"]
+    );
+    if (includes) return "Added";
+    return "Add to favorites";
   };
 
   //PAGINATION
@@ -45,10 +54,11 @@ export default function MoviesPageContainer(props) {
       <Movies
         searchValue={props.searchValue}
         favMovies={props.favMovies}
-        addToFavorites={addToFavorites}
-        currentMovies={currentMovies}
         pageNumbers={pageNumbers}
+        currentMovies={currentMovies}
+        addToFavorites={addToFavorites}
         paginateHandler={paginateHandler}
+        textOnAddToFavorites={textOnAddToFavorites}
       />
     </>
   );

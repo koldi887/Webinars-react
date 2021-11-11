@@ -15,6 +15,7 @@ export default function AddWebinar(props) {
           className={`fas fa-times fa-2x ${classes.closeFormIcon}`}
           onClick={() => props.setAddHideWebinar(false)}
         />
+
         <h2 className={classes.formTitle}>Add new Webinar</h2>
 
         <TitleComponent
