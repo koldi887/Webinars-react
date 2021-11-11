@@ -13,6 +13,6 @@
     background-color: #ffdfc9;
 }
 
-.socialMediaWrapper a:not(:last-child) {
+.socialMediaWrapper li:not(:last-child) {
     border-bottom: 2px solid lightgray;
 }

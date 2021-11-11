@@ -1,47 +1,28 @@
 import React from "react";
-import { BiBookmark } from "react-icons/bi";
-import { FiBookOpen } from "react-icons/fi";
 import classes from "./Sidebar.module.css";
+import { sideBarData } from "./SidebarData";
 
 export default function SideBar() {
-    const c = classes
-    return (
-        <div className={c.sidebarWrapper}>
+  const setClass = (item) => {
+    if (item.title) return classes.titleBlock;
+    if (item.subtitle) return classes.subtitle;
+  };
 
-            <ul className={'list'}>
-                <li className={c.subtitle}>
-                    <FiBookOpen
-                        size={32}
-                        color={'#fe9344'}
-                    />
-                    <p><strong>Resources</strong></p>
-                </li>
-                <li
-                    style={{color: '#fe9344'}}>
-                    <strong>Blog</strong>
-                </li>
-                <li>Academy</li>
-            </ul>
+  const setTitle = (item) => {
+    if (item.title) return <p className={classes.title}>{item.title}</p>;
+    return item.text;
+  };
 
-            <ul className={'list'}>
-                <li className={c.subtitle}>
-                    <BiBookmark
-                        size={32}
-                        color={'#fe9344'}
-                    />
-                    <p><strong>Categories</strong></p>
-                </li>
-                <li
-                    style={{color: '#fe9344'}}>
-                    <strong>All</strong>
-                </li>
-                <li>Expert Hot Seat</li>
-                <li>Facilitation</li>
-                <li>Retrium Updates</li>
-                <li>Collaboration and <br/> Communication</li>
-                <li>Retrospective Quick Tips</li>
-                <li>Agile Practices 101</li>
-            </ul>
-        </div>
-    )
+  return (
+    <>
+      <ul className={`list ${classes.sidebarList}`}>
+        {sideBarData.map((item, index) => (
+          <li key={index} className={setClass(item)}>
+            {item.icon && item.icon}
+            {setTitle(item)}
+          </li>
+        ))}
+      </ul>
+    </>
+  );
 }
