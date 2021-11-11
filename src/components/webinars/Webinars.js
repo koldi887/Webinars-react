@@ -4,16 +4,15 @@ import { WebinarsData } from "./WebinarsData";
 import AddWebinarContainer from "./add-webinars/AddWebinarContainer";
 
 export default function Webinars() {
-  const c = classes;
   const [currentState, setCurrentState] = useState(WebinarsData);
   const [hideAddWebinar, setHideAddWebinar] = useState(false);
 
   return (
-    <div className={c.webinarWrapper}>
-      <div className={c.addButtonBlock}>
-        <h3>Add new webinar:</h3>
+    <div className={classes.webinarWrapper}>
+      <div className={classes.addButtonBlock}>
+        <h3 className={classes.addWebinarText}>Add new webinar:</h3>
         <i
-          className={`fas fa-plus fa-2x ${c.faPlus}`}
+          className={`fas fa-plus fa-2x ${classes.addWebinarIcon}`}
           onClick={() => setHideAddWebinar(true)}
         />
       </div>
@@ -27,25 +26,22 @@ export default function Webinars() {
       )}
 
       {currentState.map((item, index) => (
-        <div className={c.webinarBlock} key={index}>
-          <img src={item.image} alt="webinar" />
-          <div className={c.webinarInfo}>
-            <div className={c.subtitle}>
-              <strong>Webinar</strong>
-            </div>
+        <div className={classes.webinarBlock} key={index}>
+          <img
+            src={item.image}
+            className={classes.webinarImage}
+            alt="webinar"
+          />
 
-            <div className={c.title}>
-              <strong>{item.title}</strong>
-            </div>
-
-            <div className={c.topicsList}>
-              <ul className={"list"}>
-                {item.subtopic.map((item, index) => (
-                  <li key={index}>{item}</li>
-                ))}
-              </ul>
-            </div>
-            <div className={c.btn}>
+          <div className={classes.webinarInfo}>
+            <p className={classes.webinarSubtitle}>Webinar</p>
+            <p className={classes.webinarTitle}>{item.title}</p>
+            <ul className={`list ${classes.webinarTopicList}`}>
+              {item.subtopic.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+            <div>
               <button className={`buttons`}>Read more</button>
             </div>
           </div>

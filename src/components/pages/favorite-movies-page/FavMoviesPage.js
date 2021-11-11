@@ -2,8 +2,6 @@ import React from "react";
 import classes from "../movies-page/moviesPage.module.css";
 
 export default function FavMoviesPage(props) {
-  const c = classes;
-
   const removeHandler = (elem) => {
     const newArr = props.favMovies.filter(
       (item) => item["imdbID"] !== elem["imdbID"]
@@ -12,11 +10,11 @@ export default function FavMoviesPage(props) {
   };
 
   return (
-    <div className={c.moviesContainer}>
+    <div className={classes.moviesContainer}>
       {props.favMovies.map((item) => (
-        <div className={c.movieBlock} key={item["imdbID"]}>
+        <div className={classes.movieBlock} key={item["imdbID"]}>
           <img src={item["Poster"]} alt="" />
-          <div className={c.overlayBlock}>
+          <div className={classes.overlayBlock}>
             <h2 onClick={() => removeHandler(item)}>Remove from Favorite</h2>
           </div>
         </div>
