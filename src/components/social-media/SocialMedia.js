@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './socialMedia.module.css'
+import classes from './SocialMedia.module.css'
 import { FaFacebookF } from "react-icons/fa";
 import { ImTwitter } from "react-icons/im";
 import { ImLinkedin2 } from "react-icons/im";

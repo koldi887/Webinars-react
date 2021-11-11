@@ -1,18 +1,18 @@
 import React, { useState} from "react";
-import classes from './container.module.css'
-import {Switch,Route} from "react-router-dom";
-import SideBar from "./SideBar";
-import SocialMedia from "./SocialMedia";
-import Webinars from "./webinar/Webinars";
-import MoviesContainer from "./navbar/pages/movies/MoviesContainer";
-import FavMovies from "./navbar/pages/movies/FavMovies";
-import Solution1 from "./navbar/pages/Solution1";
-import Solution2 from "./navbar/pages/Solution2";
-import Solution3 from "./navbar/pages/Solution3";
-import Resources1 from "./navbar/pages/Resources1";
-import Resources2 from "./navbar/pages/Resources2";
-import Pricing from "./navbar/pages/Prices";
-import Error from "./navbar/pages/Error";
+import classes from './Container.module.css'
+import {Switch, Route} from 'react-router-dom'
+import SideBar from "../sidebar/SideBar";
+import SocialMedia from "../social-media/SocialMedia";
+import Webinars from "../webinar/Webinars";
+import MoviesContainer from "../pages/movies/MoviesContainer";
+import FavMovies from "../pages/movies/FavMovies";
+import Solution1 from "../pages/Solution1";
+import Solution2 from "../pages/Solution2";
+import Solution3 from "../pages/Solution3";
+import Resources1 from "../pages/Resources1";
+import Resources2 from "../pages/Resources2";
+import Pricing from "../pages/Prices";
+import Error from "../pages/Error";
 
 export default function Container() {
     const c = classes

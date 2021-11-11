@@ -1,7 +1,7 @@
 import React from "react";
 import { BiBookmark } from "react-icons/bi";
 import { FiBookOpen } from "react-icons/fi";
-import classes from "./sidebar.module.css";
+import classes from "./Sidebar.module.css";
 
 export default function SideBar() {
     const c = classes

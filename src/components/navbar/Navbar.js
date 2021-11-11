@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
-import './nav_css/Navbar.css';
-import Dropdown from './Dropdown';
+import './Navbar.css';
+import Dropdown from './dropdown/Dropdown';
 import img from './logo.png'
-import {DropdownData} from "./DropdownData";
+import {DropdownData} from "./dropdown/DropdownData";
 
 function Navbar() {
   const [click, setClick] = useState(false);
