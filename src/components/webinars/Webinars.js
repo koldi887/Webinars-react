@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import classes from "./webinar_css/webinars.module.css";
+import classes from "./webinars.module.css";
 import {WebinarsData} from "./WebinarsData";
-import AddWebinarContainer from "./AddWebinarContainer";
+import AddWebinarContainer from "./add-webinars/AddWebinarContainer";
 
 export default function Webinars() {
     const c = classes

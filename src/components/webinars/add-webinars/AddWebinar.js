@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './webinar_css/addWebinar.module.css'
+import classes from './addWebinar.module.css'
 
 export default function AddWebinar(props) {
     const c = classes

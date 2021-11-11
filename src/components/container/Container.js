@@ -3,7 +3,7 @@ import classes from './Container.module.css'
 import {Switch, Route} from 'react-router-dom'
 import SideBar from "../sidebar/SideBar";
 import SocialMedia from "../social-media/SocialMedia";
-import Webinars from "../webinar/Webinars";
+import Webinars from "../webinars/Webinars";
 import MoviesContainer from "../pages/movies/MoviesContainer";
 import FavMovies from "../pages/movies/FavMovies";
 import Solution1 from "../pages/Solution1";
@@ -22,19 +22,6 @@ export default function Container() {
     return (
 
         <div className={c.contentContainer}>
-
-            <div className={c.searchContainer}>
-                <input type="text"
-                       placeholder={'Search...'}
-                       value={searchValue}
-                       onChange={(e) => setSearchValue(e.target.value) }
-                />
-                <button className={'buttons'}>Search</button>
-            </div>
-
-            <div className={c.sidebarContainer}>
-                <SideBar/>
-            </div>
 
             <div className={c.webinarContainer}>
                 <Switch>
@@ -58,6 +45,19 @@ export default function Container() {
                     <Route path={'/pricing'} component={Pricing}/>
                     <Route component={Error}/>
                 </Switch>
+            </div>
+
+            <div className={c.searchContainer}>
+                <input type="text"
+                       placeholder={'Search...'}
+                       value={searchValue}
+                       onChange={(e) => setSearchValue(e.target.value) }
+                />
+                <button className={'buttons'}>Search</button>
+            </div>
+
+            <div className={c.sidebarContainer}>
+                <SideBar/>
             </div>
 
             <div className={c.socialMedia}>
