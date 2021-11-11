@@ -1,94 +1,48 @@
 import React from "react";
 import classes from "./addWebinar.module.css";
+import SubtopicComponent from "./add-webinars-components/SubtopicComponent";
+import TitleComponent from "./add-webinars-components/TitleComponent";
+import ImageComponent from "./add-webinars-components/ImageComponent";
 
 export default function AddWebinar(props) {
-  const c = classes;
-
   return (
     <>
       <form
-        className={c.addFormWrapper}
+        className={classes.addWebinarForm}
         onSubmit={(event) => props.submitHandler(event)}
       >
         <i
-          className={`fas fa-times fa-2x ${c.formClose}`}
+          className={`fas fa-times fa-2x ${classes.closeFormIcon}`}
           onClick={() => props.setAddHideWebinar(false)}
         />
-        <h2>Add new Webinar</h2>
+        <h2 className={classes.formTitle}>Add new Webinar</h2>
 
-        <div className={c.formTitleBlock}>
-          <h3>Title:</h3>
-          <textarea
-            name="title"
-            value={props.title}
-            maxLength="120"
-            onChange={(event) => props.characterCounter(event)}
-          />
+        <TitleComponent
+          title={props.title}
+          characterCounter={props.characterCounter}
+          errors={props.errors}
+          characterCount={props.characterCount}
+        />
 
-          {Object.keys(props.errors.titleErr).map((key) => {
-            return (
-              <p className={c.formErr} key={key}>
-                {props.errors.titleErr[key]}
-              </p>
-            );
-          })}
-          <p>Max characters: {props.characterCount}</p>
-        </div>
+        <SubtopicComponent
+          subtopic={props.subtopic}
+          addSubtopicHandler={props.addSubtopicHandler}
+          removeTopicHandler={props.removeTopicHandler}
+          setSubtopic={props.setSubtopic}
+          errors={props.errors}
+          subtopicErr={props.subtopicErr}
+          subtopicArr={props.subtopicArr}
+        />
 
-        <div className={c.formSubtopicBlock}>
-          <h3>Subtopic:</h3>
-          <div className={c.formTopicInputBlock}>
-            <input
-              type="text"
-              name="subtopic"
-              value={props.subtopic}
-              onChange={(event) => props.setSubtopic(event.target.value)}
-            />
-            <button onClick={(event) => props.addSubtopicHandler(event)}>
-              Add
-            </button>
-          </div>
-          {Object.keys(props.errors.subtopicErr).map((key) => {
-            return (
-              <p className={c.formErr} key={key}>
-                {props.errors.subtopicErr[key]}
-              </p>
-            );
-          })}
+        <ImageComponent
+          image={props.image}
+          setImage={props.setImage}
+          errors={props.errors}
+        />
 
-          <ul className={`list ${c.formTopicList}`}>
-            {props.subtopicArr.map((item, index) => (
-              <li key={index}>
-                {item}
-                <i
-                  className={`fas fa-times ${c.removeTopic}`}
-                  onClick={() => props.removeTopicHandler(index)}
-                />
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className={c.formImageBlock}>
-          <h3>Image URL:</h3>
-          <input
-            type="text"
-            name="image"
-            value={props.image}
-            onChange={(event) => props.setImage(event.target.value)}
-          />
-          {Object.keys(props.errors.imageErr).map((key) => {
-            return (
-              <p className={c.formErr} key={key}>
-                {props.errors.imageErr[key]}
-              </p>
-            );
-          })}
-        </div>
-
-        <div className={c.formSubmitBlock}>
+        <div className={classes.formSubmitBlock}>
           <input type="submit" value="Submit" className={`buttons`} />
-          <h4 className={c.formSuccess}>{props.errors.formSuccess}</h4>
+          <h4 className={classes.formSuccess}>{props.errors.formSuccess}</h4>
         </div>
       </form>
     </>
