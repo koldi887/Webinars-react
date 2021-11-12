@@ -54,6 +54,7 @@ export default function MoviesPageContainer(props) {
       <Pagination
         itemsPerPage={moviesPerPage}
         totalItems={movies.length}
+        currentPage={currentPage}
         paginate={paginate}
       />
     </>

@@ -3,7 +3,7 @@ import classes from "./Container.module.css";
 import { Routes, Route } from "react-router-dom";
 import SideBar from "../sidebar/SideBar";
 import SocialMedia from "../social-media/SocialMedia";
-import Webinars from "../webinars/Webinars";
+import Webinars from "../pages/webinars-page/Webinars";
 import MoviesPageContainer from "../pages/movies-page/MoviesPageContainer";
 import FavMoviesPage from "../pages/favorite-movies-page/FavMoviesPage";
 import Solution1 from "../pages/Solution1";
