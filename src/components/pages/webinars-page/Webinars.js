@@ -2,21 +2,19 @@ import React, { useState } from "react";
 import classes from "./webinars.module.css";
 import { WebinarsData } from "./WebinarsData";
 import AddWebinarContainer from "./add-webinars/AddWebinarContainer";
-import { Pagination } from "../pagination/Pagination";
+import { Pagination, createPaginationState } from "../pagination/Pagination";
 
 export default function Webinars() {
   const [currentState, setCurrentState] = useState(WebinarsData);
   const [hideAddWebinar, setHideAddWebinar] = useState(false);
+
   const [currentPage, setCurrentPage] = useState(1);
   const [webinarsPerPage] = useState(4);
-
-  const indexOfLastWebinar = currentPage * webinarsPerPage;
-  const indexOfFirstWebinar = indexOfLastWebinar - webinarsPerPage;
-  const currentWebinars = currentState.slice(
-    indexOfFirstWebinar,
-    indexOfLastWebinar
+  const newArr = createPaginationState(
+    webinarsPerPage,
+    currentState,
+    currentPage
   );
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <>
@@ -37,7 +35,7 @@ export default function Webinars() {
           />
         )}
 
-        {currentWebinars.map((item, index) => (
+        {newArr.map((item, index) => (
           <div className={classes.webinarBlock} key={index}>
             <img
               src={item.image}
@@ -62,9 +60,9 @@ export default function Webinars() {
       </div>
       <Pagination
         itemsPerPage={webinarsPerPage}
-        totalItems={currentState.length}
+        setCurrentPage={setCurrentPage}
+        currentState={currentState}
         currentPage={currentPage}
-        paginate={paginate}
       />
     </>
   );

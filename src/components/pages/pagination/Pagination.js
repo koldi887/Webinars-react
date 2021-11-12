@@ -1,21 +1,29 @@
 import React from "react";
 import classes from "./pagination.module.css";
 
+export function createPaginationState(itemsPerPage, currentState, currentPage) {
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  return currentState.slice(indexOfFirstItem, indexOfLastItem);
+}
+
 export const Pagination = ({
   itemsPerPage,
-  totalItems,
-  paginate,
+  currentState,
+  setCurrentPage,
   currentPage,
 }) => {
   const pageNumbers = [];
-  console.log(currentPage);
-  for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
+
+  for (let i = 1; i <= Math.ceil(currentState.length / itemsPerPage); i++) {
     pageNumbers.push(i);
   }
 
   const setActiveClass = (number) => {
     if (currentPage === number) return classes.active;
   };
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <div className={classes.paginationContainer}>

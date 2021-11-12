@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Movies from "./Movies";
 import axios from "axios";
-import { Pagination } from "../pagination/Pagination";
+import { createPaginationState, Pagination } from "../pagination/Pagination";
 
 export default function MoviesPageContainer(props) {
   const [movies, setMovies] = useState([]);
+
   const [currentPage, setCurrentPage] = useState(1);
-  const [moviesPerPage] = useState(4);
+  const [webinarsPerPage] = useState(4);
+  const newArr = createPaginationState(webinarsPerPage, movies, currentPage);
 
   const getMovieRequest = async (searchValue) => {
     const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=e5d1210`;
@@ -36,26 +38,20 @@ export default function MoviesPageContainer(props) {
     return "Add to favorites";
   };
 
-  // PAGINATION;
-  const indexOfLastMovie = currentPage * moviesPerPage;
-  const indexOfFirstMovie = indexOfLastMovie - moviesPerPage;
-  const currentMovies = movies.slice(indexOfFirstMovie, indexOfLastMovie);
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
   return (
     <>
       <Movies
         searchValue={props.searchValue}
         favMovies={props.favMovies}
-        currentMovies={currentMovies}
+        currentMovies={newArr}
         addToFavorites={addToFavorites}
         textOnAddToFavorites={textOnAddToFavorites}
       />
       <Pagination
-        itemsPerPage={moviesPerPage}
-        totalItems={movies.length}
+        itemsPerPage={webinarsPerPage}
+        setCurrentPage={setCurrentPage}
+        currentState={movies}
         currentPage={currentPage}
-        paginate={paginate}
       />
     </>
   );
