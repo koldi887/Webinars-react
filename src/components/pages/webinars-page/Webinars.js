@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import classes from "./webinars.module.css";
 import { WebinarsData } from "./WebinarsData";
 import AddWebinarContainer from "./add-webinars/AddWebinarContainer";
-import { Pagination, createPaginationState } from "../pagination/Pagination";
+import {
+  PaginationContainer,
+  createPaginationState,
+} from "../pagination/PaginationContainer";
 
 export default function Webinars() {
   const [currentState, setCurrentState] = useState(WebinarsData);
@@ -54,7 +57,7 @@ export default function Webinars() {
           </div>
         ))}
       </div>
-      <Pagination
+      <PaginationContainer
         itemsPerPage={itemsPerPage}
         setCurrentPage={setCurrentPage}
         currentState={currentState}

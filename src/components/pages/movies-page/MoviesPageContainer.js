@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Movies from "./Movies";
 import axios from "axios";
-import { createPaginationState, Pagination } from "../pagination/Pagination";
+import {
+  createPaginationState,
+  PaginationContainer,
+} from "../pagination/PaginationContainer";
 
 export default function MoviesPageContainer(props) {
   const [movies, setMovies] = useState([]);
@@ -47,7 +50,7 @@ export default function MoviesPageContainer(props) {
         addToFavorites={addToFavorites}
         textOnAddToFavorites={textOnAddToFavorites}
       />
-      <Pagination
+      <PaginationContainer
         itemsPerPage={webinarsPerPage}
         setCurrentPage={setCurrentPage}
         currentState={movies}

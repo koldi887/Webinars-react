@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import classes from "../movies-page/moviesPage.module.css";
-import { createPaginationState, Pagination } from "../pagination/Pagination";
+import {
+  createPaginationState,
+  PaginationContainer,
+} from "../pagination/PaginationContainer";
 
 export default function FavMoviesPage(props) {
   const [currentPage, setCurrentPage] = useState(1);
@@ -30,7 +33,7 @@ export default function FavMoviesPage(props) {
           </div>
         ))}
       </div>
-      <Pagination
+      <PaginationContainer
         itemsPerPage={itemsPerPage}
         setCurrentPage={setCurrentPage}
         currentState={props.favMovies}
