@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Movies from "./Movies";
 import axios from "axios";
+import { Pagination } from "../pagination/Pagination";
 
 export default function MoviesPageContainer(props) {
   const [movies, setMovies] = useState([]);
@@ -35,30 +36,25 @@ export default function MoviesPageContainer(props) {
     return "Add to favorites";
   };
 
-  //PAGINATION
+  // PAGINATION;
   const indexOfLastMovie = currentPage * moviesPerPage;
   const indexOfFirstMovie = indexOfLastMovie - moviesPerPage;
   const currentMovies = movies.slice(indexOfFirstMovie, indexOfLastMovie);
-  const pageNumbers = [];
-
-  for (let i = 1; i <= Math.ceil(movies.length / moviesPerPage); i++) {
-    pageNumbers.push(i);
-  }
-
-  function paginateHandler(number) {
-    setCurrentPage(number);
-  }
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <>
       <Movies
         searchValue={props.searchValue}
         favMovies={props.favMovies}
-        pageNumbers={pageNumbers}
         currentMovies={currentMovies}
         addToFavorites={addToFavorites}
-        paginateHandler={paginateHandler}
         textOnAddToFavorites={textOnAddToFavorites}
+      />
+      <Pagination
+        itemsPerPage={moviesPerPage}
+        totalItems={movies.length}
+        paginate={paginate}
       />
     </>
   );

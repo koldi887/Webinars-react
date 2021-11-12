@@ -14,14 +14,6 @@ export default function Movies(props) {
           </div>
         </div>
       ))}
-
-      <div className={classes.paginationBlock}>
-        {props.pageNumbers.map((number) => (
-          <h1 key={number} onClick={() => props.paginateHandler(number)}>
-            {number}
-          </h1>
-        ))}
-      </div>
     </div>
   );
 }
