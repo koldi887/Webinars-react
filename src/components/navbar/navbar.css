@@ -77,9 +77,10 @@
   display: none;
 }
 
-/*.login-btn button {*/
-/*  margin-left: 10px;*/
-/*}*/
+.sign-menu-login {
+  font-size: large;
+  font-weight: bold;
+}
 
 @media screen and (max-width: 1000px) {
 

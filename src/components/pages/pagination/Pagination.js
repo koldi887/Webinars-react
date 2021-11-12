@@ -29,8 +29,26 @@ export const Pagination = ({
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
+  const previousPage = () => {
+    if (currentPage !== 1) setCurrentPage(currentPage - 1);
+  };
+
+  const nextPage = () => {
+    if (currentPage < pageNumbers.length) setCurrentPage(currentPage + 1);
+  };
+
+  const setHideClass = () => {
+    if (currentState.length === 0) return classes.hide;
+  };
+
   return (
     <div className={classes.paginationContainer}>
+      <i
+        className={`fas fa-angle-double-left ${
+          classes.leftArrow
+        } ${setHideClass()}`}
+        onClick={previousPage}
+      />
       <ul className={`list ${classes.paginationBlock}`}>
         {pageNumbers.map((number) => (
           <li
@@ -42,6 +60,12 @@ export const Pagination = ({
           </li>
         ))}
       </ul>
+      <i
+        className={`fas fa-angle-double-right ${
+          classes.rightArrow
+        } ${setHideClass()}`}
+        onClick={nextPage}
+      />
     </div>
   );
 };

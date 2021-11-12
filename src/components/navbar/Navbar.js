@@ -1,20 +1,20 @@
-import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
-import './Navbar.css';
-import Dropdown from './dropdown/Dropdown';
-import img from './logo.png'
-import {DropdownData} from "./dropdown/DropdownData";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import "./navbar.css";
+import Dropdown from "./dropdown/Dropdown";
+import img from "./logo.png";
+import { DropdownData } from "./dropdown/DropdownData";
 
 function Navbar() {
   const [click, setClick] = useState(false);
   const [dropdown, setDropdown] = useState(false);
-  const [active, setActive] = useState(null)
+  const [active, setActive] = useState(null);
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
 
   const onMouseEnter = (item) => {
-    setActive(item.title)
+    setActive(item.title);
 
     if (window.innerWidth < 1020) {
       setDropdown(false);
@@ -32,81 +32,73 @@ function Navbar() {
   };
 
   return (
-      <>
-        <nav className='navbar'>
+    <>
+      <nav className="navbar">
+        <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
+          <img src={img} className="navbar-logo" alt="" />
+        </Link>
 
-          <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
-            <img src={img} className='navbar-logo' alt=""/>
-          </Link>
+        <div className="menu-icon" onClick={handleClick}>
+          <i className={click ? "fas fa-times" : "fas fa-bars"} />
+        </div>
 
-          <div className='menu-icon' onClick={handleClick}>
-            <i className={click ? 'fas fa-times' : 'fas fa-bars'}/>
-          </div>
-
-          <ul className={click ? 'nav-menu active links-menu' : 'nav-menu'}>
-
-            {DropdownData.map((item, index) => (
-                    <li
-                        className={'nav-item'}
-                        onMouseEnter={() => onMouseEnter(item)}
-                        onMouseLeave={onMouseLeave}
-                        key={index}
-                    >
-                      <p
-                          className='nav-links'
-                          onClick={closeMobileMenu}
-                      >
-                        {item.title} <i className='fas fa-angle-down'/>
-                      </p>
-
-                      {dropdown && <Dropdown
-                          hideClass={active === item.title ? '' : 'menu-icon'}
-                          subNav={item.subNav}
-                      />}
-                    </li>
-                )
-            )}
+        <ul className={click ? "nav-menu active links-menu" : "nav-menu"}>
+          {DropdownData.map((item, index) => (
             <li
-                className={'nav-item'}
+              className={"nav-item"}
+              onMouseEnter={() => onMouseEnter(item)}
+              onMouseLeave={onMouseLeave}
+              key={index}
             >
-              <Link
-                  to={'/pricing'}
-                  className='nav-links'
-                  onClick={closeMobileMenu}
-              >
-                Pricing
-              </Link>
+              <p className="nav-links" onClick={closeMobileMenu}>
+                {item.title} <i className="fas fa-angle-down" />
+              </p>
+
+              {dropdown && (
+                <Dropdown
+                  hideClass={active === item.title ? "" : "menu-icon"}
+                  subNav={item.subNav}
+                />
+              )}
             </li>
+          ))}
+          <li className={"nav-item"}>
+            <Link
+              to={"/pricing"}
+              className="nav-links"
+              onClick={closeMobileMenu}
+            >
+              Pricing
+            </Link>
+          </li>
+        </ul>
 
-          </ul>
+        <ul
+          className={click ? "nav-menu active sign-menu" : "nav-menu"}
+          style={{ top: "736px" }}
+        >
+          <li className="nav-item">
+            <Link
+              to="/contact-us"
+              className="nav-links nav-links-login"
+              onClick={closeMobileMenu}
+            >
+              <p className={"sign-menu-login"}>Log in</p>
+            </Link>
+          </li>
 
-          <ul
-              className={click ? 'nav-menu active sign-menu' : 'nav-menu'}
-              style={{top: '736px'}}
-          >
-            <li className='nav-item'>
-              <Link
-                  to='/contact-us'
-                  className='nav-links nav-links-login'
-                  onClick={closeMobileMenu}
-              >
-                <strong>Log in</strong>
-              </Link>
-            </li>
-
-            <li className='nav-item'>
-              <Link
-                  to='/'
-                  className='buttons nav-item-btn links'
-                  onClick={closeMobileMenu}
-              >
-                Start Free Trial
-              </Link>
-            </li>
-          </ul>
-
-        </nav>
-      </>
+          <li className="nav-item">
+            <Link
+              to="/"
+              className="buttons nav-item-btn links"
+              onClick={closeMobileMenu}
+            >
+              Start Free Trial
+            </Link>
+          </li>
+        </ul>
+      </nav>
+    </>
   );
 }
 
