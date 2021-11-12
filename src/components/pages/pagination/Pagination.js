@@ -1,11 +1,15 @@
 import React from "react";
 import classes from "./pagination.module.css";
 
-export function createPaginationState(itemsPerPage, currentState, currentPage) {
+export const createPaginationState = (
+  itemsPerPage,
+  currentState,
+  currentPage
+) => {
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   return currentState.slice(indexOfFirstItem, indexOfLastItem);
-}
+};
 
 export const Pagination = ({
   itemsPerPage,

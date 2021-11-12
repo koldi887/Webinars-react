@@ -9,12 +9,8 @@ export default function Webinars() {
   const [hideAddWebinar, setHideAddWebinar] = useState(false);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [webinarsPerPage] = useState(4);
-  const newArr = createPaginationState(
-    webinarsPerPage,
-    currentState,
-    currentPage
-  );
+  const [itemsPerPage] = useState(4);
+  const newArr = createPaginationState(itemsPerPage, currentState, currentPage);
 
   return (
     <>
@@ -59,7 +55,7 @@ export default function Webinars() {
         ))}
       </div>
       <Pagination
-        itemsPerPage={webinarsPerPage}
+        itemsPerPage={itemsPerPage}
         setCurrentPage={setCurrentPage}
         currentState={currentState}
         currentPage={currentPage}

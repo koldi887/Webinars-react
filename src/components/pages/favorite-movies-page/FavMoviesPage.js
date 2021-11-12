@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import classes from "../movies-page/moviesPage.module.css";
+import { createPaginationState, Pagination } from "../pagination/Pagination";
 
 export default function FavMoviesPage(props) {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(4);
+  const newArr = createPaginationState(
+    itemsPerPage,
+    props.favMovies,
+    currentPage
+  );
+
   const removeHandler = (elem) => {
     const newArr = props.favMovies.filter(
       (item) => item["imdbID"] !== elem["imdbID"]
@@ -10,15 +19,23 @@ export default function FavMoviesPage(props) {
   };
 
   return (
-    <div className={classes.moviesContainer}>
-      {props.favMovies.map((item) => (
-        <div className={classes.movieBlock} key={item["imdbID"]}>
-          <img src={item["Poster"]} alt="" />
-          <div className={classes.overlayBlock}>
-            <h2 onClick={() => removeHandler(item)}>Remove from Favorite</h2>
+    <>
+      <div className={classes.moviesContainer}>
+        {newArr.map((item) => (
+          <div className={classes.movieBlock} key={item["imdbID"]}>
+            <img src={item["Poster"]} alt="" />
+            <div className={classes.overlayBlock}>
+              <h2 onClick={() => removeHandler(item)}>Remove from Favorite</h2>
+            </div>
           </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+      <Pagination
+        itemsPerPage={itemsPerPage}
+        setCurrentPage={setCurrentPage}
+        currentState={props.favMovies}
+        currentPage={currentPage}
+      />
+    </>
   );
 }
